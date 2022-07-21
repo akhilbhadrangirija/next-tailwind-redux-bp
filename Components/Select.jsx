@@ -58,7 +58,7 @@ export default function Select() {
   }
   return (
     <Input
-      placeholder={tags.length ? '' : 'Enter A Tag'}
+      placeholder={tags.length ? '' : 'Your Destinations'}
       value={value}
       onChange={e => setValue(e.currentTarget.value)}
       overrides={{
