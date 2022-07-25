@@ -20,7 +20,10 @@ export default function Home() {
               </div>
             )
           })}
-          <div></div>
+          <div>
+            Destination
+            <Select />
+          </div>
         </div>
       </main>
     </>

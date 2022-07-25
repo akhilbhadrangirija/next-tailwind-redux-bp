@@ -16,14 +16,6 @@ const InputReplacement = React.forwardRef(
           display: 'flex',
           alignItems: 'center'
         })}>
-        {tags.map((tag, index) => (
-          <Tag
-            variant={TAG_VARIANT.solid}
-            onActionClick={() => removeTag(tag)}
-            key={index}>
-            {tag}
-          </Tag>
-        ))}
         <StyledInput ref={ref} {...restProps} />
       </div>
     )
@@ -57,21 +49,31 @@ export default function Select() {
     }
   }
   return (
-    <Input
-      placeholder={tags.length ? '' : 'Your Destinations'}
-      value={value}
-      onChange={e => setValue(e.currentTarget.value)}
-      overrides={{
-        Input: {
-          style: { width: 'auto', flexGrow: 1 },
-          component: InputReplacement,
-          props: {
-            tags: tags,
-            removeTag: removeTag,
-            onKeyDown: handleKeyDown
+    <>
+      <Input
+        placeholder={tags.length ? '' : 'Your Destinations'}
+        value={value}
+        onChange={e => setValue(e.currentTarget.value)}
+        overrides={{
+          Input: {
+            style: { width: '400px' },
+            component: InputReplacement,
+            props: {
+              tags: tags,
+              removeTag: removeTag,
+              onKeyDown: handleKeyDown
+            }
           }
-        }
-      }}
-    />
+        }}
+      />
+      {tags.map((tag, index) => (
+        <Tag
+          variant={TAG_VARIANT.solid}
+          onActionClick={() => removeTag(tag)}
+          key={index}>
+          {tag}
+        </Tag>
+      ))}
+    </>
   )
 }
